@@ -3,5 +3,5 @@ COPY . /app
 WORKDIR /app
 RUN ["dnu", "restore"]
 
-EXPOSE 80
+EXPOSE 5004
 ENTRYPOINT ["dnx", ".", "kestrel"]
