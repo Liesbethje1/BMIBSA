@@ -1,13 +1,24 @@
-using Microsoft.AspNet.Builder;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
-namespace HelloWeb
+namespace bmibsaberekene
 {
-    public class Startup
+    public class Program
     {
-        public void Configure(IApplicationBuilder app)
+        public static void Main(string[] args)
         {
-            app.UseStaticFiles();
-            app.UseWelcomePage();
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
         }
     }
 }
